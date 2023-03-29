@@ -1,0 +1,46 @@
+<%- include('templates/encabezado')%>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/alarma.css">
+</head>
+<body>
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header"><h3>Mis Alarmas :3</h3></div>
+      <div class="table-responsive-sm">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Servo</th>
+              <th>Correo</th>
+              <th>Dispensada</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Alarma.forEach(Alarma => { %>
+              <tr class="<%= Alarma.active ? 'table-success' : '' %>">
+                <td><%= Alarma.name %></td>
+                <td><%= new Date(Alarma.date.getTime() + (new Date().getTimezoneOffset() * 60000)).toLocaleDateString() %></td>
+                <td><%= Alarma.time %></td>
+                <td><%= Alarma.servo %></td>
+               <td><%= Alarma.active ? 'Sí' : 'No' %></td>
+                <td>
+                  <a href="/editarA/<%=Alarma.id%>" class="btn btn-primary btn-sm">Editar</a>
+                  <a href="/borrarA/<%=Alarma.id%>" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+
+</body>
+</html>

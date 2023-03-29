@@ -1,0 +1,71 @@
+<%-include('templates/header')%>
+
+  <div class="d-flex justify-content-center">
+    <div class="container mt-3 form-signin text-center">
+        <div>
+          <div class="container mt-3">
+            <a href="http://localhost:3000/api/bin/stop_server" class="btn tk-form-btn">Stop Script Piton</a>
+          </div>
+        </div>
+  
+        <div>
+          <div class="container mt-3">
+            <a href="http://localhost:3000/api/bin/start_server" class="btn tk-form-btn">Start Script Piton</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="container mt-3">
+            <a href="" class="btn tk-form-btn" onclick="">Update Data Base</a>
+          </div>
+        </div> <br>
+
+          <script>
+            jsonRead = {};
+  
+            function readJson() {
+              fetch('http://localhost:3000/api/bin/modules')
+              .then((response) => response.json())
+                .then((json) => {
+                  console.info(json.modules[0])
+                  var htmlTags = "";
+                  json.modules.map((module) => {
+                    switch (module.name) {
+                      case 'Bascula': linkOff = 'http://localhost:3000/api/bin/stop_scale', linkOn = 'http://localhost:3000/api/bin/start_scale'; break;
+                      case 'Estufa': linkOff = 'http://localhost:3000/api/bin/stop_stove', linkOn = 'http://localhost:3000/api/bin/start_stove'; break;
+                      case 'Detector de humo': linkOff = 'http://localhost:3000/api/bin/stop_smoke', linkOn = 'http://localhost:3000/api/bin/start_smoke'; break;
+                      case 'Extractor': linkOff = 'http://localhost:3000/api/bin/stop_extractor', linkOn = 'http://localhost:3000/api/bin/start_extractor'; break;
+                    }
+                    value = module.value === undefined ? 'No Aplica' : module.value;
+                    htmlTags += '<tr>'+
+                      '<td>' + module.name + '</td>'+
+                      '<td>' + value + '</td>'+
+                      '<td>' + module.state + '</td>'+
+                      '<td><a href="' + linkOn + '">Prender</a> / <a href="' + linkOff + '">Apagar</a></td>'+
+                    '</tr>';
+                        
+                    $('#table tbody').html(htmlTags);                    
+                  })
+                });
+              // No preguntes pk lo vi de aqui https://stackoverflow.com/questions/72494154/a-listener-indicated-an-asynchronous-response-by-returning-true-but-the-messag
+              return true;
+            }
+  
+            setInterval('readJson()', 1000);
+          </script>
+          <table id="table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Valor</th>
+                <th>Estado</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+    </div>
+  </div>
+    
+  <%- include('templates/footer')%>
+

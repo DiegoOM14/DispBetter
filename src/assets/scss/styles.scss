@@ -1,0 +1,358 @@
+// tanukitchen colors
+$tk-darkblue: #272f3f;
+$tk-violet: #4B6CB7;
+$tk-green: #06BEB6;
+$tk-blue: #48B1BF;
+$tk-beige: #F2E7D5;
+
+// tanukitchen map
+$tanukitchen-colors: (
+    "tk-darkblue": $tk-darkblue,
+    "tk-green": $tk-green,
+    "tk-beige": $tk-beige,
+    "tk-blue": $tk-blue,
+    "tk-violet": $tk-violet
+);
+
+// -- overriding variables --
+$body-bg: $tk-darkblue;
+$font-family-base: url(../../fonts/Manrope.ttf);
+
+// importing stuff
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// mergin maps 
+$theme-colors: map-merge($theme-colors, $tanukitchen-colors);
+
+//
+//   ICONS
+//
+
+//
+//  mixins 
+//
+
+@mixin text-manrope{
+    font-family: 'manrope';
+}
+
+@mixin text-somatic {
+    font-family: 'somatic';
+}
+
+//
+// animations
+// 
+
+@keyframes move-bg {
+    to{
+        background-position: var(--bg-size) 0;
+    }
+}
+
+.tk-text{
+    @include text-manrope();
+    text-decoration: none;
+    color: $tk-beige !important; 
+}
+
+.tk-ani-grad{
+    --bg-size: 300%;
+    @include text-manrope();
+    font-weight: bold;
+    background: linear-gradient(90deg, $tk-green, $tk-violet, $tk-blue) 0 0 / var(--bg-size) 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: move-bg 8s infinite linear;
+}
+
+.tk-link{
+    @include text-manrope();
+    color: $tk-green;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.tk-link:hover{
+    --bg-size: 400%;
+    font-weight: bold;
+    background: linear-gradient(270deg, $tk-green, $tk-violet) 0 0 / var(--bg-size) 100%;
+    background-clip: text;
+    animation: move-bg 8s infinite linear;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.tk-form{
+    margin-left: 4rem;
+}
+
+.tk-form-label{
+    @include text-manrope(); 
+    color: $tk-beige;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.tk-form-input{
+    @include text-manrope();
+    margin-bottom: 1rem;
+    background-color: $tk-beige;
+    border: 3px solid $tk-darkblue;
+    border-radius: 15px;
+    transition: border 0.4s ease-in-out;
+}
+
+.tk-form-input:focus{
+    border: 3px solid $tk-blue;
+    background-color: $tk-beige;
+}
+
+.tk-form-chkbx{
+    border: 3px solid $tk-beige;
+    background-color: $tk-beige;
+}
+
+.tk-form-chkbx:checked{
+    border: 3px solid $tk-violet;
+    background-color: $tk-violet;
+}
+
+.tk-form-btn{
+    color: $tk-darkblue;
+    background: $tk-green;
+    overflow: hidden;
+    transform: translate(0);
+    @include text-manrope();
+    font-weight: bold;
+}
+
+.tk-form-btn::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient( $tk-green, $tk-violet); 
+    transition: 0.5s ease;
+    transform: scaleX(0);
+}
+
+.tk-form-btn:hover::before{
+    transform: scaleX(1) scaleY(1);
+}
+
+// user profile
+
+.usr-pfp{
+    margin: 5rem;
+    border: 3px solid $tk-green;
+    border-radius: 100%;
+    height: 15rem;
+    width: auto;
+}
+
+.tk-usr-label{
+    @include text-manrope(); 
+    color: $tk-beige;
+    padding-left: 0;
+    width: 10rem;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.tk-usr-input{
+    @include text-manrope();
+    color: $tk-darkblue;
+    width: 40%;
+    margin-bottom: 3rem;
+    background-color: $tk-beige;
+    border: 3px solid $tk-darkblue;
+    border-radius: 15px;
+    transition: border 0.4s ease-in-out;
+
+    &:focus{
+        border: 3px solid $tk-blue;
+        background-color: $tk-beige;
+    }
+
+    &:disabled{
+        background-color: $tk-darkblue;
+        border: 2px solid $tk-violet;
+        color: $tk-beige;
+    }
+}
+
+.tk-green-line{
+    width: 100%;
+    border: 3px solid $tk-green;
+    border-radius: 10px;
+    }
+
+////
+/// CONTROL PANEL
+/// 
+
+.modulos, .consola{
+    padding: 3rem;
+    margin: 2rem;
+    border: 2px solid $tk-green;
+    border-radius: 3rem;
+    box-shadow: rgba(7, 3, 31, 0.534) 0px 5px 15px;
+}
+
+#tConsole{
+    overflow: auto;
+    max-height: 60em; 
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: small;           
+    color: $tk-beige;
+    &:focus {
+        border: none;
+    }
+
+    &:active {
+        border: none;
+    }
+}
+
+.tk-showData{
+    padding: 1rem;
+    @include text-manrope();
+    color: $tk-beige;
+    background-color: $tk-darkblue;
+    margin: 1rem;
+    border-left: 2px solid $tk-violet;
+    box-shadow: rgba(7, 3, 31, 0.534) 0px 4px 6px -1px, rgba(7, 3, 31, 0.534) 0px 2px 4px -1px;   
+    &:hover{
+        color: $tk-blue;
+        background-color: #1f242e;
+        cursor:default;
+    }
+}
+
+.tk-btn-panel{
+    color: $tk-darkblue;
+    background: $tk-blue;
+    @include text-manrope();
+    font-weight: bold;
+    padding: .5rem;
+    border: none;
+    border-radius: 1rem;
+    margin: 0 0 1rem 2rem; 
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover{
+     background-color: $tk-violet;
+     color: $tk-beige !important;   
+    }
+}
+
+.tk-cli{
+    @include text-manrope();
+    color: $tk-darkblue;
+    background-color: $tk-beige;
+    border-radius: 2rem;
+    transition: border 0.4s ease-in-out;
+
+    &:focus{
+        border: 3px solid $tk-blue;
+        background-color: $tk-beige;
+    }
+}
+
+.tk-modal{
+    background-color: $tk-darkblue;
+}
+
+.tk-card{
+    background-color: $tk-darkblue;
+    border: 2px solid $tk-blue;
+    box-shadow: rgba(7, 3, 31, 0.534) 0px 4px 6px -1px, rgba(7, 3, 31, 0.534) 0px 2px 4px -1px;   
+}
+
+thead{
+    @include text-manrope();
+    color: $tk-violet;
+    font-weight: bold;
+    border-style: none;
+}
+
+tbody, td, th, table{
+    border-style: none !important;
+}
+
+// NEW CONTROL PANEL
+
+.tk-panel-label{
+    @include text-manrope();
+    background-color: $tk-beige;
+    color: $tk-darkblue;
+    font-weight: bolder;
+    font-size: 1rem;
+    width: 75%;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    margin: 4rem 3rem 1rem 3rem;
+    padding: 2px;
+}
+
+.tk-recipes-label{
+    @include text-manrope();
+    width: 100%;
+    background-color: $tk-beige;
+    color: $tk-darkblue;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    margin: 4rem 1rem 1rem 1rem;
+    padding: 2px;
+}
+
+.tk-panel-data{
+    @include text-manrope();
+    color: $tk-beige;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.tk-divider{
+    border-style: solid;
+    border-color: $tk-beige;
+    width: 90%;
+    margin: 1rem;
+}
+
+#toStove:focus, #toOven:focus, #toGas:focus,
+#toExtractor:focus, #toScale:focus{
+    box-shadow: 5px $tk-violet; 
+}
+
+#toStove:checked, #toOven:checked, #toGas:checked,
+#toExtractor:checked, #toScale:checked{
+    background-color: $tk-green; 
+}
+
+
+// USER AVATAR
+
+.tk-nb-avatar{
+    border-radius: 100%;
+    height: 40px;
+    width: auto;
+}
+
+a[aria-current='page']{
+    border-bottom-style: solid;
+    border-color: $tk-green;
+
+}
+
+.tk-recipe-type{
+    width: 80%;
+    height: auto;
+}

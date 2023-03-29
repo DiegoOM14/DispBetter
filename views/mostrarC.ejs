@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Esquema de Contador</title>
+</head>
+<body>
+	<h1>Esquema de Contador</h1>
+
+	<ul>
+		<% contadores.forEach(contador => { %>
+			<li>
+				<p>Fecha y hora: <%= contador.fecha_hora %></p>
+				<img src="data:image/png;base64, <%= contador.imagen.toString('base64') %>">
+			</li>
+		<% }); %>
+	</ul>
+  
+</body>
+</html>

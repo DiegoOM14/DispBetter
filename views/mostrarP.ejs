@@ -1,0 +1,38 @@
+<%- include('templates/encabezado')%>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-header"><h3>Mi Perfil</h3></div>
+      <div class="table-responsive-sm">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Contraseña</th>
+              <th>Correo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% User.forEach(User => { %>
+                <td><%= User.nombre %></td>
+                <td><%= User.password %></td>
+                <td><%= User.email %></td>
+                <td>
+                  <a href="/editarU/<%=User.id%>" class="btn btn-primary btn-sm">Editar</a>
+                  <a href="/borrarU/<%=User.id%>" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+
+
+  
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</body>
+</html>

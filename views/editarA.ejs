@@ -1,0 +1,22 @@
+<%- include('templates/encabezado')%>
+
+<form method="post" action="/editar_alarma/<%= alarma._id %>">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" class="form-control" id="name" name="name" value="<%= alarma.name %>">
+    </div>
+    <div class="form-group">
+      <label for="date">Fecha:</label>
+      <input type="date" class="form-control" id="date" name="date" value="<%= alarma.date.toISOString().substr(0, 10) %>">
+    </div>
+    <div class="form-group">
+      <label for="time">Hora:</label>
+      <input type="time" class="form-control" id="time" name="time" value="<%= alarma.time %>">
+    </div>
+    <div class="form-group">
+      <label for="servo">Servo:</label>
+      <input type="text" class="form-control" id="servo" name="servo" value="<%= alarma.servo %>">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>

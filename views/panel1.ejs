@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/alarma.css">
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+		<title>TEBAN</title>
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+			}
+			h2.logotipo {
+				font-family: 'Bebas Neue', cursive;
+				font-size: 2rem;
+				margin: 0;
+			}
+			form {
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 1rem;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+			}
+			form label {
+				display: block;
+				margin-bottom: 0.5rem;
+				font-weight: 600;
+			}
+			form input,
+			form select {
+				margin-bottom: 1rem;
+				padding: 0.5rem;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+				width: 100%;
+				box-sizing: border-box;
+				font-size: 1rem;
+				font-weight: 400;
+			}
+			form button[type="submit"] {
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				border-radius: 3px;
+				padding: 0.5rem 1rem;
+				font-size: 1rem;
+				cursor: pointer;
+				transition: background-color 0.3s ease-in-out;
+			}
+			form button[type="submit"]:hover {
+				background-color: #0069d9;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<h2 class="logotipo navbar-brand">DisppBetter</h2>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a href="/home" class="nav-link active">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a href="/boni" class="nav-link">Alarmas</a>
+							</li>
+							<li class="nav-item">
+								<a href="/alarma" class="nav-link">Mis Alarmas</a>
+							</li>
+							<li class="nav-item">
+								<a href="/mostrarP" class="nav-link">Mi Perfil</a>
+							</li>
+							<li class="nav-item">
+								<a href="salir" class="nav-link">Cerrar Sesion</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-6 mx-auto">
+				<form action="alarms" method="post">
+					<div class="form-group">
+						<label for="name">Nombre de la alarma:</label>
+						<input type="text" id="name" name="name" class="form-control" required>
+					</div>
+
+					<div class="form-group">
+						<label for="date">Fecha:</label>
+						<input type="date" id="date"  name="date" class="form-control" required>
+					</div>
+
+					<div class="form-group">
+						<label for="alarm-time">Hora:</label>
+						<input type="time" id="alarm-time" name="time" class="form-control" required>
+					</div>
+
+					<div class="form-group">
+						<label for="servo">Servomotor:</label>
+						<select id="servo" name="servo" class="form-control" required>
+						  <option value="1">Capsula</option>
+						</select>
+					</div>
+					
+					
+					<button type="submit" class="btn btn-primary">Guardar alarma</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

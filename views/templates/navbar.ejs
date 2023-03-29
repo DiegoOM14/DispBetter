@@ -1,0 +1,25 @@
+<div class="container">
+    <nav class="navbar navbar-expand-sm">
+        <a class="navbar-brand">
+            <img src="../img/Horizontal-TanukitchenLogo-White.png" 
+                        height="50" width="auto" alt="Tanukitchen">
+        </a>
+        <div class="collapse navbar-collapse justify-content-center" id="tkNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item px-4">
+                    <a href="/control_panel/<%= obj.user.user %>" class="nav-link tk-text">Control Panel</a>
+                </li>
+                <li class="nav-item px-4">
+                    <a href="/recipes/<%= obj.user.user %>" class="nav-link tk-text">Recipes</a>
+                </li>
+                <li class="nav-item px-4">
+                    <a href="../register.ejs" class="nav-link tk-text">Profile</a>
+                </li>
+            </ul>
+            </div>
+        <div class="d-flex justify-content-center">
+            <a href="#" class="tk-link align-self-center mx-2"><%= obj.user.name %></a>
+                <img class="tk-nb-avatar" src="/img/anomanches.jpg" alt="avatar">
+        </div>
+    </nav>
+</div>

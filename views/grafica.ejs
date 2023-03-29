@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gráfica de Plotly</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <div id="grafica"></div>
+
+  <script>
+    const x = ["Servo 1", "Servo 2", "Servo 3"];
+    const y = [10, 20, 30];
+    const trace = {
+      x: x,
+      y: y,
+      type: 'bar'
+    };
+    const layout = {
+      title: 'Contador de giros de los servos',
+      xaxis: {
+        title: 'Servo'
+      },
+      yaxis: {
+        title: 'Contador de giros'
+      }
+    };
+    const graphData = [trace];
+    Plotly.newPlot('grafica', graphData, layout);
+  </script>
+</body>
+</html>
